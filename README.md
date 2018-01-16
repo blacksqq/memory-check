@@ -6,6 +6,7 @@
 手段
 ===
 使用ld提供的–wrap选项，比如重写malloc函数，我们先定义__wrap_malloc函数，如下
+```c
 void * __wrap_malloc( size_t size) {
   void* result;
   result= __real_malloc( size);
@@ -13,4 +14,5 @@ void * __wrap_malloc( size_t size) {
 
   return result;
 }
+```
 程序链接的时候使用gcc -Wl,--wrap=malloc参数
